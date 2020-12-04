@@ -1,0 +1,22 @@
+- name: Copy file configuration
+  template:
+    src: template.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+    owner: root
+    group: elasticsearch
+    mode: 0660
+  notify:
+    - Restart elasticsearch service
+
+- name: Change -Xms in jvm.options
+  replace:
+    path: /etc/elasticsearch/jvm.options
+    regexp: '(-Xms(.*)g)'
+    replace: -Xms1g
+              
+- name: Change -Xmx in jvm.options
+  replace:
+    path: /etc/elasticsearch/jvm.options
+    regexp: '(-Xmx(.*)g)'
+    replace: -Xmx1g
+          

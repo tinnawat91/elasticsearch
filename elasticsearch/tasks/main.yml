@@ -1,0 +1,13 @@
+---
+# tasks file for elasticsearch
+- block:
+    - import_tasks: prerequirsite.yml
+    - import_tasks: remove_old_packages.yml
+    - import_tasks: install_packages.yml
+    - import_tasks: config_firewall.yml
+    - import_tasks: config_elasticsearch.yml
+  rescue:
+    - name: Error!!!
+      debug:
+        msg: "Installation error!!!. Please install manually"
+

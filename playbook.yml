@@ -1,0 +1,5 @@
+--- 
+- name: Install elasticsearch 6.8
+  hosts: nodes
+  roles:
+    - elasticsearch

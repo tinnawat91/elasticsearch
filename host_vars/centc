@@ -1,0 +1,6 @@
+ansible_host: 192.168.93.134
+ansible_user: centc
+ansible_become: yes
+ansible_become_method: sudo
+ansible_become_user: root
+ansible_become_password: 1234

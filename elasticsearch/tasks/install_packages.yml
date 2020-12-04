@@ -1,0 +1,36 @@
+- name: Update packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: Import key
+  rpm_key:
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Create repository
+  copy:
+    src: elasticsearch.repo
+    dest: /etc/yum.repos.d/elasticsaerch.repo
+
+- name: Update repository
+  yum:
+    name: "*"
+    state: latest
+
+- name: Install openjdk 8
+  yum:
+    name: java-1.8.0-openjdk
+    state: latest
+
+- name: Install elasticsearch
+  yum:
+    name: elasticsearch
+    state: latest
+
+- name: Start elasticsearch service
+  service:
+    name: elasticsearch
+    state: started 
+    enabled: true
+
